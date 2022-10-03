@@ -1,0 +1,120 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int info;
+    struct node *link;
+};
+int main()
+{
+    int ch,item,newitem;
+    struct node *new,*start=0,*ptr,*temp,*save,*loc,*avail,*empty;
+    printf("SHRESHTHI TAYAL\n");
+    printf("2100290120160\n\n\n");
+    //input elements of circular linked list
+    do
+    {
+        new=(struct node*)malloc(sizeof(struct node));
+        printf("Enter the value:");
+        scanf("%d",&new->info);
+        new->link=start;
+        if(start==NULL)
+        {
+        start=new;
+        }
+        else
+        {
+        ptr->link=new;
+        }
+        ptr=new;
+        printf("Do you want to create another node, press 1 for yes:");
+        scanf("%d",&ch);
+    }
+    while (ch==1);
+    //printing circular linked list
+    printf("\nThe circular linked list is:\n");
+    printf("%d ",start->info);
+    temp=start->link;
+    while(temp!=start)
+    {
+        printf("%d ",temp->info);
+        temp=temp->link;
+    }
+    //Inserting element before any given item
+    printf("\nEnter element before which element is to be inserted:");
+    scanf("%d",&item);
+    printf("\nEnter element which is to be inserted:");
+    scanf("%d",&newitem);
+    avail=(struct node*)malloc(sizeof(struct node));
+    ptr=start->link;
+    save=start;
+    if(start->info==item)
+    {
+        loc=start;
+             if(avail==NULL)
+              {
+                printf("Overflow");
+              
+              }
+              else
+              {
+                empty=avail;
+                avail=avail->link;
+                empty->info=newitem;
+                empty->link=start;
+                start=empty;
+                printf("\nThe inserted circular linked list is:\n");
+                printf("%d ",start->info);
+               printf("%d ",(start->link)->info);
+               temp=(start->link)->link;
+               while(temp!=start->link)
+                {
+                   printf("%d ",temp->info);
+                   temp=temp->link;
+                }
+               
+              }
+    }
+    else
+    {
+    while(ptr!=start)
+    {
+        if (ptr->info==item)
+        {
+             loc=ptr;
+             if(avail==NULL)
+              {
+              printf("Overflow");
+              break;
+              }
+             else
+             {
+              empty=avail;
+              avail=avail->link;
+              empty->info=newitem;
+              empty->link=loc;
+              save->link=empty;
+              printf("\nThe circular inserted linked list is:\n");
+              printf("%d ",start->info);
+               temp=start->link;
+               while(temp!=start)
+                {
+                   printf("%d ",temp->info);
+                   temp=temp->link;
+                }
+                break;
+             }
+        }
+        else
+        {
+            save=ptr;
+            ptr=ptr->link;
+        }
+    }
+    }
+    if(ptr==NULL)
+    {
+    printf("Item not found");
+    }
+    return 0;
+}

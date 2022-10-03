@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int info;
+    struct node *link;
+};
+int main()
+{
+    int ch;
+    struct node *new,*start=0,*ptr,*temp;
+    printf("SHRESHTHI TAYAL\n");
+    printf("2100290120160\n\n\n");
+    //creating circular linked list
+    do
+    {
+        new=(struct node*)malloc(sizeof(struct node));
+        printf("Enter the value:");
+        scanf("%d",&new->info);
+        new->link=start;
+        if(start==NULL)
+        {
+        start=new;
+        }
+        else
+        {
+        ptr->link=new;
+        }
+        ptr=new;
+        printf("Do you want to create another node, press 1 for yes:");
+        scanf("%d",&ch);
+    }
+    while (ch==1);
+    //traversing circular linear linked
+    printf("Traversal of circular linked list is:\n");
+    printf("%d ",start->info);
+    temp=start->link;
+    while(temp!=start)
+    {
+        printf("%d ",temp->info);
+        temp=temp->link;
+    }
+    return 0;
+}
